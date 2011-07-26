@@ -1,36 +1,29 @@
 <h1>Todos</h1>
 
+<% if params[:notice] then %>
+    <p><%= params[:notice] %></p>
+<% end %>
+
 <% form_for Todo.new do |f| %>
     <%= f.label "New todo" %>:
     <%= f.text_field :label %>
     <%= f.submit "Add" %>
 <% end %>
 
-<table>
-  <tr>
-    <th>Done</th>
-    <th>Label</th>
-    <th>Due in</th>
-    <th>Tags</th>
-    <th></th>
-    <th></th>
-    <th></th>
-  </tr>
-
-<% @todos.each do |todo| %>
-  <tr>
-    <td><%= todo.done %></td>
-	<td><%= todo.label %></td>
-    <td class="<%= "overdue" if todo.is_due? %>"><%= time_ago_in_words(todo.due_at) if todo.due_at %></td>
-    <td>
-    <% todo.tags.each do |t| %>
-        <%= link_to t.label, t %>
-    <% end %>
-    </td>
-    <td><%= link_to 'Show', todo %></td>
-    <td><%= link_to 'Edit', edit_todo_path(todo) %></td>
-    <td><%= link_to 'Destroy', todo, :confirm => 'Are you sure?', :method => :delete %></td>
-  </tr>
+<% form_tag :controller => :todos, :action => :markdone do %>
+	<% @todos.each do |todo| %>
+	  <div>
+	    <%= check_box_tag "todos[]", todo.id, todo.done, {:id => "todo#%i" % todo.id} %>
+		<td><%= todo.label %></td>
+	    <td class="<%= "overdue" if todo.is_due? %>"><%= time_ago_in_words(todo.due_at) if todo.due_at %></td>
+	    <td>
+	    <% todo.tags.each do |t| %>
+	        <%= link_to t.label, t %>
+	    <% end %>
+	    </td>
+	    <td><%= link_to 'Edit', edit_todo_path(todo) %></td>
+	    <td><%= link_to 'Destroy', todo, :confirm => 'Are you sure?', :method => :delete %></td>
+	  </div>
+	<% end %>
+	<%= submit_tag "Mark done" %>
 <% end %>
-</table>
-

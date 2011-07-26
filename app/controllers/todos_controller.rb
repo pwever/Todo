@@ -12,8 +12,9 @@ class TodosController < ApplicationController
   end
   
   def all
-    @todos = Todo.where(:done => false)
+    @todos = Todo.all # where(:done => false)
     @todos.sort!
+    params[:notice] = "Showing complete todo list."
     
     respond_to do |format|
       format.html { render :index }
@@ -24,11 +25,19 @@ class TodosController < ApplicationController
   def tickler
     @todos = Todo.where(:done => false).select { |todo| todo.due_at.nil? }
     @todos.sort!
+    params[:notice] = "Showing only todos items without a due date."
     
     respond_to do |format|
       format.html { render :index }
       format.xml  { render :xml => @todos }
     end
+  end
+  
+  def markdone
+    params["todos"].each do |todo_id|
+      Todo.find(todo_id.to_i).set_done = true
+    end
+    redirect_to :action => "index"
   end
 
   # GET /todos/1
@@ -65,10 +74,10 @@ class TodosController < ApplicationController
 
     respond_to do |format|
       if @todo.save
-        format.html { redirect_to(@todo, :notice => 'Todo was successfully created.') }
+        format.html { redirect_to(:action => "index", :notice => 'Todo was successfully created.') }
         format.xml  { render :xml => @todo, :status => :created, :location => @todo }
       else
-        format.html { render :action => "new" }
+        format.html { redirect_to(:action => "index", :notice => 'Unable to create. Please try again.') }
         format.xml  { render :xml => @todo.errors, :status => :unprocessable_entity }
       end
     end

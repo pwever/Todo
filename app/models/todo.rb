@@ -55,11 +55,12 @@ class Todo < ActiveRecord::Base
     t
   end
   
-  def setdone=(state)
-    toggleDone unless (state==self.done)
+  def set_done=(state)
+    toggle_done unless (state==self.done)
+    self.save
   end
 
-  def toggleDone
+  def toggle_done
     self.done = !self.done
     if self.done
       self.done_at = Time.now
@@ -73,7 +74,6 @@ class Todo < ActiveRecord::Base
   end
   
   def is_current?
-    p "%s diff? %s" % [self.due_at, (self.due_at-Time.now).to_s] if self.due_at
     self.due_at.nil? || (self.due_at-Time.now)<60*60*12
   end
   
