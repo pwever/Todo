@@ -1,0 +1,13 @@
+# Read about fixtures at http://ar.rubyonrails.org/classes/Fixtures.html
+
+one:
+  input: MyString
+  label: MyString
+  due_at: 2011-07-25 17:06:28
+  done: false
+
+two:
+  input: MyString
+  label: MyString
+  due_at: 2011-07-25 17:06:28
+  done: false
