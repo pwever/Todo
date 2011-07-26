@@ -2,7 +2,8 @@ class TodosController < ApplicationController
   # GET /todos
   # GET /todos.xml
   def index
-    @todos = Todo.all
+    @todos = Todo.where(:done => false).select {|todo| todo.is_current? }
+    @todos.sort!
 
     respond_to do |format|
       format.html # index.html.erb

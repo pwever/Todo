@@ -68,12 +68,13 @@ class Todo < ActiveRecord::Base
     end
   end
 
-  def isDue?
+  def is_due?
     self.due_at && self.due_at < Time.now
   end
   
-  def isCurrent?
-    self.due_at==nil || (Time.now-self.due_at)<60*60*12
+  def is_current?
+    p "%s diff? %s" % [self.due_at, (self.due_at-Time.now).to_s] if self.due_at
+    self.due_at.nil? || (self.due_at-Time.now)<60*60*12
   end
   
   def <=>(other)

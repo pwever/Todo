@@ -4,7 +4,7 @@ class CreateTodos < ActiveRecord::Migration
       t.string :input
       t.string :label
       t.timestamp :due_at
-      t.boolean :done
+      t.boolean :done, :default => false
 
       t.timestamps
     end
