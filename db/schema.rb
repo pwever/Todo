@@ -28,7 +28,7 @@ ActiveRecord::Schema.define(:version => 20110726000835) do
     t.string   "input"
     t.string   "label"
     t.datetime "due_at"
-    t.boolean  "done"
+    t.boolean  "done",       :default => false
     t.datetime "created_at"
     t.datetime "updated_at"
   end

@@ -27,4 +27,13 @@ class TodoTest < ActiveSupport::TestCase
     assert Tag.find_by_label("car").todos.include?(todo), "Seems the tags was not associated with the todo item."
     assert_not_nil Tag.find_by_label("home"), "Check whether multiple tags are parsed correctly."
   end
+  
+  test "done defaults to false" do
+    todo = Todo.new
+    todo.label = "Something rather rather"
+    todo.save
+    
+    assert_not_nil todo.done, "Seems like todo.done does not default to 'false'."
+  end
+  
 end
