@@ -18,7 +18,7 @@
 	    <td class="<%= "overdue" if todo.is_due? %>"><%= time_ago_in_words(todo.due_at) if todo.due_at %></td>
 	    <td>
 	    <% todo.tags.each do |t| %>
-	        <%= link_to t.label, t %>
+	        <span class="tag"><%= t.label %></span>
 	    <% end %>
 	    </td>
 	    <td><%= link_to 'Edit', edit_todo_path(todo) %></td>
