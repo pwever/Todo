@@ -10,6 +10,26 @@ class TodosController < ApplicationController
       format.xml  { render :xml => @todos }
     end
   end
+  
+  def all
+    @todos = Todo.where(:done => false)
+    @todos.sort!
+    
+    respond_to do |format|
+      format.html { render :index }
+      format.xml  { render :xml => @todos }
+    end
+  end
+  
+  def tickler
+    @todos = Todo.where(:done => false).select { |todo| todo.due_at.nil? }
+    @todos.sort!
+    
+    respond_to do |format|
+      format.html { render :index }
+      format.xml  { render :xml => @todos }
+    end
+  end
 
   # GET /todos/1
   # GET /todos/1.xml
