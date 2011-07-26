@@ -1,6 +1,8 @@
 class Todo < ActiveRecord::Base
   has_and_belongs_to_many :tags
-  before_save :parse
+  validates_presence_of :label
+  before_validation :parse
+  
   
   COLL_PATTERN = /\s+  (today|tonight|tomorrow) \s? (.*) /ix
   DATE_PATTERN = /\s+  (on|next|at|in|after|this)  \s  (\d|jan|feb|mar|apr|may|jun|jul|aug|sep|oct|dec|mon|tue|wed|thu|fri|sat|sun|week|month|year|afternoon|evening).*  $/ix
@@ -10,6 +12,7 @@ class Todo < ActiveRecord::Base
   
   
   def parse
+    return if self.label.nil? || self.label.empty?
     self.input = self.label.clone # save user input for debugging
     
     # Check for tags

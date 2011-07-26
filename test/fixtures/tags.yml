@@ -1,9 +1,9 @@
 # Read about fixtures at http://ar.rubyonrails.org/classes/Fixtures.html
 
-one:
-  label: MyString
-  color: MyString
+car:
+  label: car
+  color: "#553322"
 
 two:
-  label: MyString
-  color: MyString
+  label: call
+  color: "#683322"

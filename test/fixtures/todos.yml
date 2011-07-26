@@ -1,13 +1,13 @@
 # Read about fixtures at http://ar.rubyonrails.org/classes/Fixtures.html
 
 one:
-  input: MyString
-  label: MyString
+  input: "Call grandma tomorrow #call #family"
+  label: "Call grandma"
   due_at: 2011-07-25 17:06:28
-  done: false
+  done: true
 
 two:
-  input: MyString
-  label: MyString
-  due_at: 2011-07-25 17:06:28
+  input: "Change engine oil in 3 month #car"
+  label: "Change engine oil"
+  due_at: 2011-10-25 17:06:28
   done: false
