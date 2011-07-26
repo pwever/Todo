@@ -20,6 +20,13 @@
   <%= @todo.done %>
 </p>
 
+<p>
+	<b>Tags:</b>
+	<% @todo.tags.each do |tag| %>
+		<%=h tag %>
+	<% end %>
+</p>
+
 
 <%= link_to 'Edit', edit_todo_path(@todo) %> |
 <%= link_to 'Back', todos_path %>
