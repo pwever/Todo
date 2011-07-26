@@ -1,11 +1,17 @@
-<h1>Listing todos</h1>
+<h1>Todos</h1>
+
+<% form_for Todo.new do |f| %>
+    <%= f.label "New todo" %>:
+    <%= f.text_field :label %>
+    <%= f.submit "Add" %>
+<% end %>
 
 <table>
   <tr>
-    <th>Input</th>
-    <th>Label</th>
-    <th>Due at</th>
     <th>Done</th>
+    <th>Label</th>
+    <th>Due in</th>
+    <th>Tags</th>
     <th></th>
     <th></th>
     <th></th>
@@ -13,10 +19,14 @@
 
 <% @todos.each do |todo| %>
   <tr>
-    <td><%= todo.input %></td>
-    <td><%= todo.label %></td>
-    <td><%= todo.due_at %></td>
     <td><%= todo.done %></td>
+	<td><%= todo.label %></td>
+    <td><%= distance_of_time_in_words(Time.now, todo.due_at) if todo.due_at %></td>
+    <td>
+    <% todo.tags.each do |t| %>
+        <%= link_to t.label, t %>
+    <% end %>
+    </td>
     <td><%= link_to 'Show', todo %></td>
     <td><%= link_to 'Edit', edit_todo_path(todo) %></td>
     <td><%= link_to 'Destroy', todo, :confirm => 'Are you sure?', :method => :delete %></td>
@@ -24,6 +34,3 @@
 <% end %>
 </table>
 
-<br />
-
-<%= link_to 'New Todo', new_todo_path %>
