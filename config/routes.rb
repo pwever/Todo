@@ -1,5 +1,6 @@
 Todos::Application.routes.draw do
   
+  root :to => 'todos#index'
   match 'todos/all' => 'todos#all'
   match 'todos/tickler' => 'todos#tickler'
   resources :todos
