@@ -3,27 +3,17 @@
     <p><%= params[:notice] %></p>
 <% end %>
 
-<% form_for Todo.new do |f| %>
+<%= form_for Todo.new do |f| %>
     <%= f.label "New todo:" %>
-    <%= f.text_field :label %>
+    <%= f.text_field :label, :placeholder => "Enter new todo here" %>
     <%= f.submit "Add" %>
 <% end %>
 
-<% form_tag( {:action => :markdone}, :id => "todos" ) do %>
-	<% @todos.each do |todo| %>
-		<div>
-		<%= check_box_tag "todos[]", todo.id, todo.done, {:id => "todo#%i" % todo.id} %>
-		<%= todo.label %>
-		<span class="timestamp <%= "overdue" if todo.is_due? %>"><%= time_ago_in_words(todo.due_at) if todo.due_at %></span>
-		<span class="tags">
-		<% todo.tags.each do |t| %>
-			<span class="tag"><%= t.label %></span>
-		<% end %>
-		</span>
-		<span class="actions">
-			<%= link_to 'Edit', edit_todo_path(todo) %>
-			<%= link_to 'Destroy', todo, :confirm => 'Are you sure?', :method => :delete %></span>
-	  </div>
+<ul id="todos">
+<%= form_tag( {:action => :markdone} ) do %>
+	<% @todos.each do |@todo| %>
+<%= render "line" %>
 	<% end %>
 	<%= submit_tag "Mark done" %>
 <% end %>
+</ul>

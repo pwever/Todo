@@ -71,14 +71,25 @@ class TodosController < ApplicationController
   # POST /todos.xml
   def create
     @todo = Todo.new(params[:todo])
-
-    respond_to do |format|
+    
+    if request.xhr?
+      # AJAX request
+      respond_to do |format|
       if @todo.save
-        format.html { redirect_to(:action => "index", :notice => 'Todo was successfully created.') }
-        format.xml  { render :xml => @todo, :status => :created, :location => @todo }
-      else
-        format.html { redirect_to(:action => "index", :notice => 'Unable to create. Please try again.') }
-        format.xml  { render :xml => @todo.errors, :status => :unprocessable_entity }
+          format.html { render :partial => "line" }
+        else
+          render :status => 403
+        end
+      end
+    else
+      respond_to do |format|
+        if @todo.save
+          format.html { redirect_to(:action => "index", :notice => 'Todo was successfully created.') }
+          format.xml  { render :xml => @todo, :status => :created, :location => @todo }
+        else
+          format.html { redirect_to(:action => "index", :notice => 'Unable to create. Please try again.') }
+          format.xml  { render :xml => @todo.errors, :status => :unprocessable_entity }
+        end
       end
     end
   end
@@ -87,14 +98,25 @@ class TodosController < ApplicationController
   # PUT /todos/1.xml
   def update
     @todo = Todo.find(params[:id])
-
-    respond_to do |format|
+    
+    if request.xhr?
+      # AJAX request
+      respond_to do |format|
       if @todo.update_attributes(params[:todo])
-        format.html { redirect_to(@todo, :notice => 'Todo was successfully updated.') }
-        format.xml  { head :ok }
-      else
-        format.html { render :action => "edit" }
-        format.xml  { render :xml => @todo.errors, :status => :unprocessable_entity }
+          format.html { render :partial => "line" }
+        else
+          render :status => 403
+        end
+      end
+    else
+      respond_to do |format|
+        if @todo.update_attributes(params[:todo])
+          format.html { redirect_to(@todo, :notice => 'Todo was successfully updated.') }
+          format.xml  { head :ok }
+        else
+          format.html { render :action => "edit" }
+          format.xml  { render :xml => @todo.errors, :status => :unprocessable_entity }
+        end
       end
     end
   end

@@ -1,12 +1,11 @@
 Todos::Application.routes.draw do
   
   root :to => 'todos#index'
-  match 'all' => 'todos#all'
-  match 'tickler' => 'todos#tickler'
-  match 'markdone' => 'todos#markdone'
+  match 'todos/all' => 'todos#all'
+  match 'todos/sometime' => 'todos#tickler'
+  match 'todos/markdone' => 'todos#markdone'
   resources :todos
-  # resources :tags
-
+  
   # The priority is based upon order of creation:
   # first created -> highest priority.
 

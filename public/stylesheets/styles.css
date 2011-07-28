@@ -24,3 +24,16 @@ a:hover {
 	background-color: black;
 	color: white;
 }
+
+ul {
+	list-style: none;
+}
+
+.done {
+	opacity: 0.25;
+	text-decoration: line-through;
+}
+
+#todos li form, #todos li form * {
+	display: inline;
+}
