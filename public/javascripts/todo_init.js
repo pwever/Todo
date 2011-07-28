@@ -1,7 +1,7 @@
 
 
 $(document).ready(function(evt){
-	//return;
+	// return;
 	
 	// manage new todo field
 	var new_todo_form = $('#new_todo');
@@ -21,8 +21,8 @@ $(document).ready(function(evt){
 		});
 		return false;
 	});
-	new_todo_form.find('label').hide();
 	new_todo_form.find('input[type=submit]').hide();
+	new_todo_form.find('input[type=text]').css("width", "96%");
 	
 	
 	
@@ -47,6 +47,7 @@ $(document).ready(function(evt){
 	todos.find("input[type=submit]").hide();
 	
 	
+	// enable inline editing
 	todos.find('li span.input').click(function(evt){
 		var content_span = $(this);
 		var id = content_span.parent().find("input").val();
@@ -78,7 +79,12 @@ $(document).ready(function(evt){
 		
 		input.focus();
 		input.select();
+	}).hover(function(){
+		$(this).css("background-color","rgb(255,255,220)");
+	},function(){
+		$(this).css("background-color","transparent");
 	});
+	
 	todos.find('.delete_link').click(function(){
 		return false;
 	});

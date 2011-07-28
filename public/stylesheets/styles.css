@@ -1,14 +1,17 @@
+/* reset */
 * {
 	margin: 0;
 	padding: 0;
 }
 
+
+/* general */
 body {
 	font-family: Helvetica, Arial, sans-serif;
-	font-size: 14px;
-	background-color: #EEE;
 	font-size: 12px;
+	line-height: 1.5em;
 	color: #666;
+	background-color: #EEE;
 }
 
 div#container {
@@ -35,25 +38,58 @@ a:hover {
 	color: white;
 }
 
+
+p.notice {
+	color: green;
+	padding: 0.25em;
+	text-align: center;
+}
+
+
+/* new todo form */
+#new_todo input[type=text] {
+	width: 70%;
+	padding: 0.5em;
+	margin-bottom: 0.5em;
+	border: 1px solid #EEE;
+}
+
+#new_todo input[type=submit] {
+	width: 25%;
+	padding: 0.5em;
+	margin-bottom: 0.5em;
+	border: 1px solid #EEE;
+	color: white;
+}
+#new_todo input[type=submit]:hover {
+	background-color: black;
+}
+
+
+
+
+/* todo list */
 ul#todos {
 	list-style: none;
 }
 
 ul#todos li {
 	position: relative;
-	border-bottom: 1px solid #EEE;
+	border-top: 1px solid #EEE;
 	padding: 0.25em;
-	line-height: 1.5em;
-}
-ul#todos li:last-child {
-	border-bottom: 0;
 }
 
-ul#todos li span.input {;}
+ul#todos li:nth-child(2) {
+	border-top: 0;
+}
 
-ul#todos li span.labels {
-	position: absolute;
-	right: 0;
+ul#todos li.done {
+	opacity: 0.25;
+	text-decoration: line-through;
+}
+
+ul#todos li span.input {
+	padding: 0.45em 0.5em;
 }
 
 ul#todos li span.timestamp {
@@ -62,30 +98,72 @@ ul#todos li span.timestamp {
 	background-color: #EEE;
 }
 
+ul#todos input[type=submit] {
+	width: 25%;
+	padding: 0.5em;
+	margin: 0.5em auto;
+	border: 1px solid #EEE;
+	color: white;
+}
+
+
+
+
+
+/* labels */
+ul#todos li span.labels {
+	position: absolute;
+	right: 0;
+}
+
 ul#todos li span.tag {
 	font-size: 0.8em;
 	padding: 0.25em 0.5em;
-	background-color: #AAA;
-}
-
-ul#todos .done {
-	opacity: 0.25;
-	text-decoration: line-through;
-}
-
-#new_todo input, ul#todos input[type=text] {
-	width: 96%;
-	padding: 0.5em;
-	margin-bottom: 0.5em;
-	border: 1px solid #EEE;
-}
-
-#todos li form, #todos li form input {
-	display: inline;
-	width: 80%;
+	color: white;
 }
 
 ul#todos a.delete_link {
 	font-size: 0.8em;
 	padding: 0.25em 0.5em;
+}
+
+
+
+
+/* in-line editing */
+#todos li form, #todos li form input {
+	display: inline;
+	width: 80%;
+}
+
+ul#todos input[type=text] {
+	width: 70%;
+	padding: 0.5em;
+	margin-bottom: 0.5em;
+	border: 1px solid #EEE;
+}
+
+
+
+
+
+
+
+/* edit page */
+#edit_todo_form input[type=text] {
+	width: 70%;
+	padding: 0.5em;
+	margin-bottom: 0.5em;
+	border: 1px solid #EEE;
+}
+
+#edit_todo_form input[type=submit] {
+	width: 25%;
+	padding: 0.5em;
+	margin-bottom: 0.5em;
+	border: 1px solid #EEE;
+	color: white;
+}
+#new_todo input[type=submit]:hover {
+	background-color: black;
 }

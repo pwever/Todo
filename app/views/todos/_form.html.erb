@@ -1,7 +1,7 @@
 <%= form_for(@todo) do |f| %>
   <% if @todo.errors.any? %>
     <div id="error_explanation">
-      <h2><%= pluralize(@todo.errors.count, "error") %> prohibited this todo from being saved:</h2>
+      <h2><%= pluralize(@todo.errors.count, "error") %> prevented this todo from being saved:</h2>
 
       <ul>
       <% @todo.errors.full_messages.each do |msg| %>
@@ -11,8 +11,6 @@
     </div>
   <% end %>
 
-  <div class="field">
-    <%= f.check_box :done %> <%= f.text_field :label %>
-    <%= f.submit %>
-  </div>
+  <%= f.text_field :label %>
+  <%= f.submit "Update" %>
 <% end %>

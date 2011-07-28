@@ -1,11 +1,11 @@
-<% if params[:notice] then %>
-<p><%= params[:notice] %></p>
-<% end %>
 
 <%= form_for Todo.new do |f| %>
-    <%= f.label "New todo:" %>
     <%= f.text_field :label, :placeholder => "Enter new todo here" %>
     <%= f.submit "Add" %>
+<% end %>
+
+<% if params[:notice] then %>
+<p class="notice"><%= params[:notice] %></p>
 <% end %>
 
 <ul id="todos">
