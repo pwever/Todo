@@ -77,6 +77,7 @@ $(document).ready(function(evt){
 		content_span.hide();
 		
 		input.focus();
+		input.select();
 	});
 	todos.find('.delete_link').click(function(){
 		return false;
@@ -85,28 +86,4 @@ $(document).ready(function(evt){
 	todos.find('.edit_link').hide();
 	
 });
-
-
-
-
-function editInPlace(el) {
-    var li = el.up('li');
-    var id = li.down('input[type=checkbox]').value;
-    var form = new Element('form');
-    var input = new Element('input', {type:"text", value:el.innerHTML});
-    input.onblur = function() { cancelEdit(li); };
-    form.insert(input);
-    form.onsubmit = function() {
-	new Ajax.Updater( li, '/todos/'+id,
-    { method:"put",
-      parameters:{ id:id, 'todo[label]':input.value},
-      onComplete: function() { ajaxify(li); }
-    });
-	return false;
-    }
-    el.hide();
-    el.insert({after:form});
-    input.focus();
-}
-
 

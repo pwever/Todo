@@ -1,6 +1,7 @@
 <li>
 	<%= check_box_tag "todos[]", @todo.id, @todo.done, {:id => "todo#%i" % @todo.id} %>
 	<span class="input"><%= @todo.label %></span>
+	<span class="labels">
 	<% if (@todo.due_at) -%>
 	<span class="timestamp <%= "overdue" if @todo.is_due? %>"><%= time_ago_in_words(@todo.due_at) %></span>
 	<% end -%>
@@ -9,4 +10,5 @@
 	<% end %>
 	<%= link_to 'Edit', edit_todo_path(@todo), :class => "edit_link" %>
 	<%= link_to "×", @todo, :method => :delete, :class => "delete_link" %>
+	</span>
 </li>
