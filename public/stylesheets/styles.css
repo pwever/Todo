@@ -84,12 +84,8 @@ ul#todos {
 
 ul#todos li {
 	position: relative;
-	border-top: 1px solid #EEE;
+	border-bottom: 1px solid #EEE;
 	padding: 0.25em;
-}
-
-ul#todos li:nth-child(2) {
-	border-top: 0;
 }
 
 ul#todos li.done {

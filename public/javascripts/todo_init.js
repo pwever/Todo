@@ -16,7 +16,8 @@ $(document).ready(function(evt){
 				// clear the form
 				new_todo_form.find("input[type=text]").val("").focus();
 				// add new todo to the list
-				todos.prepend(data);
+				$("#todos").prepend(data);
+				ajaxify_todo_items();
 			}
 		});
 		return false;
@@ -24,10 +25,15 @@ $(document).ready(function(evt){
 	new_todo_form.find('input[type=submit]').hide();
 	new_todo_form.find('input[type=text]').css("width", "96%");
 	
+	ajaxify_todo_items();
 	
-	
-	// enable checkboxes
+});
+
+
+
+function ajaxify_todo_items() {
 	var todos = $("#todos");
+	// enable checkboxes
 	todos.find('input[type=checkbox]').each(function(index,ele){
 		var checkbox = $(ele);
 		checkbox.change(function(evt){
@@ -46,10 +52,10 @@ $(document).ready(function(evt){
 	// remove submit button
 	todos.find("input[type=submit]").hide();
 	
-	
 	// enable inline editing
 	todos.find('li span.input').click(function(evt){
 		var content_span = $(this);
+		var li = content_span.parents("li");
 		var id = content_span.parent().find("input").val();
 		var form = $(document.createElement("form"));
 		var input = $(document.createElement("input")).attr("type","text").attr("name","todo[label]").attr("value", $(this).html());
@@ -63,8 +69,8 @@ $(document).ready(function(evt){
 				, dataType: "html"
 				, error: function(jqXHR, textStatus, errorThrown) { alert(textStatus + "\n" + errorThrown) }
 				, success: function(data, textStatus, jqXHR) {
-					// clear the form
 					content_span.parent().replaceWith(data);
+					ajaxify_todo_items();
 				}
 			});
 			return false;
@@ -85,6 +91,7 @@ $(document).ready(function(evt){
 		$(this).css("background-color","transparent");
 	});
 	
+	// Remove edit and delete actions
 	todos.find('.delete_link').click(function(){
 		var link = $(this);
 		$.ajax({
@@ -98,8 +105,7 @@ $(document).ready(function(evt){
 		});
 		return false;
 	});
-	// Remove edit and delete actions
 	todos.find('.edit_link').hide();
 	
-});
+}
 
