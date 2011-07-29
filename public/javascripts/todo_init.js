@@ -86,6 +86,16 @@ $(document).ready(function(evt){
 	});
 	
 	todos.find('.delete_link').click(function(){
+		var link = $(this);
+		$.ajax({
+			url: link.attr("href")
+			, type: "delete"
+			, dataType: "html"
+			, error: function(jqXHR, textStatus, errorThrown) { alert(textStatus + "\n" + errorThrown) }
+			, success: function(data, textStatus, jqXHR) {
+				link.parents("li").fadeOut();
+			}
+		});
 		return false;
 	});
 	// Remove edit and delete actions
