@@ -19,6 +19,9 @@ div#container {
 	margin: 2em auto;
 	padding: 2em;
 	background-color: white;
+	-webkit-border-radius: 2px;
+	-moz-border-radius: 2px;
+	border-radius: 2px;
 }
 
 h1, h2, h3, h4 {
@@ -31,6 +34,9 @@ a {
 	margin-left: -0.2em;
 	text-decoration: none;
 	color: #CCC;
+	-webkit-border-radius: 2px;
+	-moz-border-radius: 2px;
+	border-radius: 2px;
 }
 
 a:hover {
@@ -52,6 +58,9 @@ p.notice {
 	padding: 0.5em;
 	margin-bottom: 0.5em;
 	border: 1px solid #EEE;
+	-webkit-border-radius: 2px;
+	-moz-border-radius: 2px;
+	border-radius: 2px;
 }
 
 #new_todo input[type=submit] {
@@ -96,6 +105,13 @@ ul#todos li span.timestamp {
 	font-size: 0.8em;
 	padding: 0.25em 0.5em;
 	background-color: #EEE;
+	-webkit-border-radius: 2px;
+	-moz-border-radius: 2px;
+	border-radius: 2px;
+}
+ul#todos li span.timestamp.overdue {
+	background-color: #FF7700;
+	color: white;
 }
 
 ul#todos input[type=submit] {
@@ -104,6 +120,9 @@ ul#todos input[type=submit] {
 	margin: 0.5em auto;
 	border: 1px solid #EEE;
 	color: white;
+	-webkit-border-radius: 2px;
+	-moz-border-radius: 2px;
+	border-radius: 2px;
 }
 
 
@@ -120,6 +139,9 @@ ul#todos li span.tag {
 	font-size: 0.8em;
 	padding: 0.25em 0.5em;
 	color: white;
+	-webkit-border-radius: 2px;
+	-moz-border-radius: 2px;
+	border-radius: 2px;
 }
 
 ul#todos a.delete_link {
