@@ -73,6 +73,10 @@ class Todo < ActiveRecord::Base
     self.due_at && self.due_at < Time.now
   end
   
+  def due_today?
+    self.due_at && self.due_at < (Time.now + 24.hours)
+  end
+  
   def is_current?
     self.due_at.nil? || (self.due_at-Time.now)<60*60*12
   end
