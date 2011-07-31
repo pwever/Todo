@@ -7,7 +7,7 @@ $(document).ready(function(evt){
 	var new_todo_form = $('#new_todo');
 	new_todo_form.submit(function(){
 		$.ajax({
-			url: "/todos"
+			url: "todos"
 			, type: 'post'
 			, data: new_todo_form.serialize()
 			, dataType: "html"
