@@ -16,7 +16,7 @@ body {
 }
 
 div#container {
-	width: 25em;
+	width: 40em;
 	margin: 2em auto;
 	padding: 2em;
 	background-color: white;
@@ -100,7 +100,6 @@ ul#todos li span.input {
 }
 
 ul#todos li span.timestamp {
-	font-size: 0.8em;
 	padding: 0.25em 0.5em;
 	background-color: #EEE;
 	-webkit-border-radius: 2px;
@@ -129,12 +128,12 @@ ul#todos input[type=submit] {
 
 /* labels */
 ul#todos li span.labels {
+	font-size: 0.75em;
 	position: absolute;
 	right: 0;
 }
 
 ul#todos li span.tag {
-	font-size: 0.8em;
 	padding: 0.25em 0.5em;
 	color: white;
 	-webkit-border-radius: 2px;
@@ -143,7 +142,6 @@ ul#todos li span.tag {
 }
 
 ul#todos a.delete_link {
-	font-size: 0.8em;
 	padding: 0.25em 0.5em;
 }
 
