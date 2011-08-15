@@ -1,4 +1,5 @@
 .Apple*
+.DS_Store
 *.rbc
 *.sassc
 .sass-cache
