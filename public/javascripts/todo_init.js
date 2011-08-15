@@ -7,7 +7,7 @@ $(document).ready(function(evt){
 	var new_todo_form = $('#new_todo');
 	new_todo_form.submit(function(){
 		$.ajax({
-			url: "todos"
+			url: new_todo_form.attr('action')
 			, type: 'post'
 			, data: new_todo_form.serialize()
 			, dataType: "html"
@@ -39,7 +39,7 @@ function ajaxify_todo_items() {
 		checkbox.change(function(evt){
 			// should mark the item on the server via ajax
 			$.ajax({
-				url: "todos/markdone"
+				url: $("#todos form").attr("action") 
 				, type: 'post'
 				, data: { "todos[]": checkbox.attr('value') }
 				, error: function(jqXHR, textStatus, errorThrown) { alert('error'); } 
@@ -63,7 +63,7 @@ function ajaxify_todo_items() {
 		form.append($("input[name=authenticity_token]").first().clone());
 		form.submit(function(evt){
 			$.ajax({
-				url: "todos/" + id
+				url: $("#new_todo").attr("action") +"/" + id
 				, type: "put"
 				, data: form.serialize()
 				, dataType: "html"
