@@ -63,7 +63,7 @@ function ajaxify_todo_items() {
 		form.append($("input[name=authenticity_token]").first().clone());
 		form.submit(function(evt){
 			$.ajax({
-				url: $("#new_todo").attr("action") +"/" + id
+				url: $("#new_todo").attr("action") + id
 				, type: "put"
 				, data: form.serialize()
 				, dataType: "html"
