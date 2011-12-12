@@ -132,4 +132,16 @@ class TodosController < ApplicationController
       format.xml  { head :ok }
     end
   end
+  
+  
+  def tag
+    @todos = []
+    tag = Tag.first(:conditions => { :label => params[:tag].downcase })
+    @todos = tag.todos.select {|t| !t.done && t.is_current? } if !tag.nil?
+    @header = params[:tag]
+    
+    respond_to do |format|
+      format.html { render :index }
+    end
+  end
 end

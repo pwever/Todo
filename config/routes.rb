@@ -3,6 +3,7 @@ Todos::Application.routes.draw do
   match '/all' => 'todos#all'
   match '/sometime' => 'todos#tickler'
   match '/markdone' => 'todos#markdone'
+  match '/tag/:tag' => 'todos#tag'
   resources :todos, :path => '/'
   
   # The priority is based upon order of creation:

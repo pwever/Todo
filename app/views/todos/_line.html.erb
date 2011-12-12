@@ -6,7 +6,7 @@
 	<span class="timestamp <%= "overdue" if @todo.is_due? %>"><%= time_ago_in_words(@todo.due_at) %></span>
 	<% end -%>
 	<% @todo.tags.each do |t| %>
-	<span class="tag" style="background-color:<%= t.color %>"><%= t.label %></span>
+	<a href="/tag/<%= t.label %>"><span class="tag" style="background-color:<%= t.color %>"><%= t.label %></span></a>
 	<% end %>
 	<%= link_to 'Edit', edit_todo_path(@todo), :class => "edit_link" %>
 	<%= link_to "×", @todo, :method => :delete, :class => "delete_link" %>
