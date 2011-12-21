@@ -13,6 +13,11 @@ body {
 	line-height: 1.5em;
 	color: #666;
 	background-color: #EEE;
+	background: -webkit-linear-gradient(45deg, #EEE 25%,
+	    #E9E9E9 25%, #E9E9E9 50%, 
+	    #EEE 50%, #EEE 75%, 
+	    #E9E9E9 75%);
+	background-size:100px 100px;
 }
 
 div#container {

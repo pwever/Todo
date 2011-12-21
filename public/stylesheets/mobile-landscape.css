@@ -1,0 +1,6 @@
+#new_todo input[type=text] {
+	position: relative;
+}
+ul#todos li span.tag {
+	display: inline;
+}
