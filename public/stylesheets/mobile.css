@@ -1,0 +1,197 @@
+/* reset */
+* {
+	margin: 0;
+	padding: 0;
+	font-family: gesta-1, gesta-2, Helvetica, Arial, sans-serif;
+}
+
+
+/* general */
+body {
+	font-size: 16px;
+	font-weight: 100;
+	line-height: 1.5em;
+	color: #666;
+	background-color: #EEE;
+	-webkit-user-select: none;
+}
+
+div#container {
+	width: 100%;
+	margin: 0;
+	padding: 0;
+	background-color: white;
+	-webkit-border-radius: 2px;
+	-moz-border-radius: 2px;
+	border-radius: 2px;
+}
+
+h1, h2, h3, h4 {
+	font-weight: bold;
+	font-size: 1.5em;
+}
+
+a {
+	padding: 0.2em;
+	margin-left: -0.2em;
+	text-decoration: none;
+	color: #CCC;
+	-webkit-border-radius: 2px;
+	-moz-border-radius: 2px;
+	border-radius: 2px;
+}
+
+p.notice {
+	color: green;
+	padding: 0.25em;
+	text-align: center;
+}
+
+
+/* new todo form */
+#new_todo {
+	position: absolute;
+	width: 100%;
+	padding: 0;
+	z-index: 10000;
+}
+#new_todo input[type=text] {
+	position: fixed;
+	width: 100%;
+	padding: 0.5em;
+	margin-bottom: 0.5em;
+	border: 0;
+	-webkit-appearance:none;
+	background-color: #666;
+	color: #FFF;
+	font-size: 1.25em;
+	font-weight: 600;
+	-webkit-border-radius: 0;
+	-moz-border-radius: 0;
+	border-radius: 0;
+}
+
+#new_todo input[type=submit] {
+	width: 25%;
+	padding: 0.5em;
+	margin-bottom: 0.5em;
+	border: 1px solid #EEE;
+	color: white;
+}
+#new_todo input[type=submit]:hover {
+	background-color: black;
+}
+
+
+
+
+/* todo list */
+ul#todos {
+	padding: 1em;
+	padding-top: 4em;
+	list-style: none;
+}
+
+ul#todos li {
+	position: relative;
+	border-top: 1px solid #EEE;
+	border-bottom: 0;
+	padding: 0.25em;
+	font-weight: 400;
+}
+
+ul#todos li.done {
+	opacity: 0.25;
+	text-decoration: line-through;
+}
+
+ul#todos li span.input {
+	padding: 0.4em 0.5em;
+}
+
+ul#todos li span.timestamp {
+	padding: 0.25em 0.5em;
+	background-color: #EEE;
+	-webkit-border-radius: 2px;
+	-moz-border-radius: 2px;
+	border-radius: 2px;
+}
+ul#todos li span.timestamp.overdue {
+	background-color: #FF7700;
+	color: white;
+}
+
+ul#todos input[type=submit] {
+	width: 25%;
+	padding: 0.5em;
+	margin: 0.5em auto;
+	border: 1px solid #EEE;
+	color: white;
+	-webkit-border-radius: 2px;
+	-moz-border-radius: 2px;
+	border-radius: 2px;
+}
+
+
+
+
+
+/* labels */
+ul#todos li span.labels {
+	font-size: 0.75em;
+	position: absolute;
+	right: 0;
+}
+
+ul#todos li span.tag {
+	padding: 0.25em 0.5em;
+	color: white;
+	-webkit-border-radius: 2px;
+	-moz-border-radius: 2px;
+	border-radius: 2px;
+}
+
+ul#todos a.delete_link {
+	padding: 0.25em 0.5em;
+}
+
+
+
+
+/* in-line editing */
+#todos li form, #todos li form input {
+	display: inline;
+	width: 80%;
+}
+
+ul#todos input[type=text] {
+	width: 70%;
+	padding: 0.5em;
+	margin-bottom: 0.5em;
+	border: 1px solid #EEE;
+}
+
+
+
+
+
+
+
+/* edit page */
+#edit_todo_form input[type=text] {
+	width: 70%;
+	padding: 0.5em;
+	margin-bottom: 0.5em;
+	border: 1px solid #EEE;
+}
+
+#edit_todo_form input[type=submit] {
+	width: 25%;
+	padding: 0.5em;
+	margin-bottom: 0.5em;
+	border: 1px solid #EEE;
+	color: white;
+}
+#new_todo input[type=submit]:hover {
+	background-color: black;
+}

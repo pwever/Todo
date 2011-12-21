@@ -9,6 +9,7 @@ capybara-*.html
 /vendor/bundle
 /log/*
 /tmp/*
+/design/*
 /db/*.sqlite3
 /public/system/*
 /coverage/

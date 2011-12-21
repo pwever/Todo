@@ -2,7 +2,25 @@
 <html>
 <head>
   <title>Todos</title>
-  <%= stylesheet_link_tag :all %>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  
+  <!-- iOS 1.1.3+: this is the icon that's used when the user adds your app to the home screen -->  
+  <!-- also works on Android! -->  
+  <link rel="apple-touch-icon" href="/images/todo-icon-72.png"/>  
+  
+  <!-- iOS 4.2+ icons for different resolutions -->  
+  <link rel="apple-touch-icon" sizes="72x72" href="/images/todo-icon-72.png" />  
+  <link rel="apple-touch-icon" sizes="114x114" href="/images/todo-icon-114.png" />  
+  
+  <!-- enable full-screen mode (only when launched from home screen) -->  
+  <meta name="apple-mobile-web-app-capable" content="yes" />  
+  
+  <!-- controls the appearance of the status bar in full-screen mode -->  
+  <meta name="apple-mobile-web-app-status-bar-style" content="black" />
+  
+  <%= stylesheet_link_tag "styles" %>
+  <link rel="stylesheet" media="all and (max-width: 40em)" href="/stylesheets/mobile.css" />
+  
   <%= javascript_include_tag "http://ajax.googleapis.com/ajax/libs/jquery/1.6.2/jquery.min.js" %>
   <%= javascript_include_tag "todo_init" %>
   <script type="text/javascript" src="http://use.typekit.com/jyw0ozu.js"></script>
