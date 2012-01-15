@@ -10,9 +10,19 @@
 
 <ul id="todos">
 <%= form_tag( {:action => :markdone} ) do %>
-	<% @todos.each do |@todo| %>
+<% @todos.each do |@todo| %>
 <%= render "line" %>
 	<% end %>
 	<%= submit_tag "Mark done" %>
 <% end %>
 </ul>
+
+<% if !@tags.nil? then %>
+<ul id="ticklers">
+	<li><a href="/"><span class="tag" style="background-color:#CCC">All</span></a></li>
+	<% @tags.each do |t| %>
+	<li><a href="/tag/<%= t.label %>"><span class="tag" style="background-color:<%= t.color %>"><%= t.label %></span></a></li>
+	<% end %>
+</ul>
+<% end %>
+	

@@ -130,6 +130,15 @@ ul#todos input[type=submit] {
 	border-radius: 2px;
 }
 
+ul#ticklers {
+	list-style: none;
+	margin-top: 1em;
+}
+
+ul#ticklers li {
+	display: inline;
+}
+
 
 
 
@@ -141,7 +150,7 @@ ul#todos li span.labels {
 	right: 0;
 }
 
-ul#todos li span.tag {
+ul#todos li span.tag, ul#ticklers li span.tag {
 	padding: 0.25em 0.5em;
 	color: white;
 	-webkit-border-radius: 2px;

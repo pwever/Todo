@@ -2,9 +2,15 @@ class TodosController < ApplicationController
   # GET /todos
   # GET /todos.xml
   def index
-    @todos = Todo.where(:done => false).select {|todo| todo.is_current? }
-    @todos.sort!
-
+    current_todos = Todo.where(:done => false).select {|todo| todo.is_current? }
+    current_todos.sort!
+    @todos = current_todos.select {|todo| todo.due_today? }
+    @tags = []
+    current_todos.each { |todo| 
+      @tags.concat(todo.tags) if todo.tags.length > 0
+    }
+    @tags.uniq!
+    
     respond_to do |format|
       format.html # index.html.erb
       format.xml  { render :xml => @todos }
@@ -15,6 +21,7 @@ class TodosController < ApplicationController
     @todos = Todo.all # where(:done => false)
     @todos.sort!
     params[:notice] = "Showing complete todo list."
+    @tags = Tag.all
     
     respond_to do |format|
       format.html { render :index }
@@ -25,6 +32,12 @@ class TodosController < ApplicationController
   def tickler
     @todos = Todo.where(:done => false).select { |todo| todo.due_at.nil? }
     @todos.sort!
+    @tags = []
+    @todos.each { |todo| 
+      @tags.concat(todo.tags) if todo.tags.length > 0
+    }
+    @tags.uniq!
+    
     params[:notice] = "Showing only todos items without a due date."
     
     respond_to do |format|
@@ -139,6 +152,14 @@ class TodosController < ApplicationController
     tag = Tag.first(:conditions => { :label => params[:tag].downcase })
     @todos = tag.todos.select {|t| !t.done && t.is_current? } if !tag.nil?
     @header = params[:tag]
+    
+    current_todos = Todo.where(:done => false).select {|todo| todo.is_current? }
+    @tags = []
+    current_todos.each { |todo| 
+      @tags.concat(todo.tags) if todo.tags.length > 0
+    }
+    @tags.uniq!
+    
     
     respond_to do |format|
       format.html { render :index }
