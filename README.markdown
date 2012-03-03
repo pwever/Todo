@@ -15,7 +15,7 @@ Examples
 Screengrabs
 -----------
 ![](https://lh4.googleusercontent.com/-IXN6ub7zBUs/T1GcEgj8W7I/AAAAAAAADAI/y0J5dMP-a4I/s576/todos-screengrab-desktop.png)
-![](http://www.knittingpixel.com/projects/todos-screengrab-mobile.png)
+![](https://lh4.googleusercontent.com/-U9W6dyGc1Rw/T1GcIp4wI-I/AAAAAAAADAQ/oPErFnUUMNs/s576/todos-screengrab-mobile.png)
 
 
 Future developments
