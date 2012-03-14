@@ -137,6 +137,7 @@ ul#ticklers {
 
 ul#ticklers li {
 	display: inline;
+	line-height: 2em;
 }
 
 
