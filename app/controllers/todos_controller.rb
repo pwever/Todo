@@ -4,7 +4,7 @@ class TodosController < ApplicationController
   def index
     current_todos = Todo.where(:done => false).select {|todo| todo.is_current? }
     current_todos.sort!
-    @todos = current_todos.select {|todo| todo.due_today? }
+    @todos = current_todos #.select {|todo| todo.due_today? }
     @tags = []
     current_todos.each { |todo| 
       @tags.concat(todo.tags) if todo.tags.length > 0
