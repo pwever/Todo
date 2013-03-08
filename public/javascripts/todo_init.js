@@ -94,10 +94,12 @@ function ajaxify_todo_items() {
 	// Remove edit and delete actions
 	todos.find('.delete_link').click(function(){
 		var link = $(this);
+		console.log(link.attr("href"));
 		$.ajax({
 			url: link.attr("href")
 			, type: "delete"
-			, dataType: "html"
+			//, data: $("input[name=authenticity_token]").first().serialize()
+			, dataType: "json"
 			, error: function(jqXHR, textStatus, errorThrown) { alert(textStatus + "\n" + errorThrown) }
 			, success: function(data, textStatus, jqXHR) {
 				link.parents("li").fadeOut();

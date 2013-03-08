@@ -143,6 +143,7 @@ class TodosController < ApplicationController
     respond_to do |format|
       format.html { redirect_to(todos_url) }
       format.xml  { head :ok }
+      format.json { render :json => true }
     end
   end
   
