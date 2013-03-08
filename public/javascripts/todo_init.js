@@ -16,7 +16,7 @@ $(document).ready(function(evt){
 				// clear the form
 				new_todo_form.find("input[type=text]").val("").focus();
 				// add new todo to the list
-				$("#todos").prepend(data);
+				$("#todos_due").prepend(data);
 				ajaxify_todo_items();
 			}
 		});
@@ -32,14 +32,14 @@ $(document).ready(function(evt){
 
 
 function ajaxify_todo_items() {
-	var todos = $("#todos");
+	var todos = $(".todos");
 	// enable checkboxes
 	todos.find('input[type=checkbox]').each(function(index,ele){
 		var checkbox = $(ele);
 		checkbox.change(function(evt){
 			// should mark the item on the server via ajax
 			$.ajax({
-				url: $("#todos form").attr("action") 
+				url: $(".todos form").attr("action") 
 				, type: 'post'
 				, data: { "todos[]": checkbox.attr('value') }
 				, error: function(jqXHR, textStatus, errorThrown) { alert('error'); } 

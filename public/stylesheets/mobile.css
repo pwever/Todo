@@ -87,41 +87,41 @@ p.notice {
 
 
 /* todo list */
-ul#todos {
+ul.todos {
 	padding: 0em;
 	padding-top: 4em;
 	list-style: none;
 }
 
-ul#todos li {
+ul.todos li {
 	position: relative;
 	padding: 0.5em 0.75em;
 	font-weight: 400;
 }
 
-ul#todos li.done {
+ul.todos li.done {
 	opacity: 0.25;
 	text-decoration: line-through;
 }
 
-ul#todos li span.input {
+ul.todos li span.input {
 	padding: 0.4em 0.5em;
 	-webkit-appearance:none;
 }
 
-ul#todos li span.timestamp {
+ul.todos li span.timestamp {
 	padding: 0.25em 0.5em;
 	background-color: #EEE;
 	-webkit-border-radius: 2px;
 	-moz-border-radius: 2px;
 	border-radius: 2px;
 }
-ul#todos li span.timestamp.overdue {
+ul.todos li span.timestamp.overdue {
 	background-color: #FF7700;
 	color: white;
 }
 
-ul#todos input[type=submit] {
+ul.todos input[type=submit] {
 	width: 25%;
 	padding: 0.5em;
 	margin: 0.5em auto;
@@ -138,14 +138,14 @@ ul#todos input[type=submit] {
 
 
 /* labels */
-ul#todos li span.labels {
+ul.todos li span.labels {
 	font-size: 0.75em;
 	position: absolute;
 	right: 0;
 }
 
-ul#todos li span.tag {
-	display: none;
+ul.todos li span.tag {
+	display: inline;
 	padding: 0.25em 0.5em;
 	color: white;
 	-webkit-border-radius: 2px;
@@ -153,7 +153,7 @@ ul#todos li span.tag {
 	border-radius: 2px;
 }
 
-ul#todos a.delete_link {
+ul.todos a.delete_link {
 	padding: 0.25em 0.5em;
 }
 
@@ -161,13 +161,13 @@ ul#todos a.delete_link {
 
 
 /* in-line editing */
-#todos li form, #todos li form input {
+ul.todos li form, #todos li form input {
 	-webkit-appearance:none;
 	display: inline;
 	width: 80%;
 }
 
-ul#todos input[type=text] {
+ul.todos input[type=text] {
 	width: 70%;
 	padding: 0.5em;
 	margin-bottom: 0.5em;

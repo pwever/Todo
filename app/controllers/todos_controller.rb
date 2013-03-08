@@ -2,11 +2,14 @@ class TodosController < ApplicationController
   # GET /todos
   # GET /todos.xml
   def index
-    current_todos = Todo.where(:done => false).select {|todo| todo.is_current? }
-    current_todos.sort!
-    @todos = current_todos #.select {|todo| todo.due_today? }
+    todos = Todo.where(:done => false)
+    todos.sort!
+    
+    @todos_current = todos.select {|todo| todo.is_current? && !todo.is_due? }
+    @todos = todos.select { |todo| todo.is_due? }
+
     @tags = []
-    current_todos.each { |todo| 
+    todos.each { |todo| 
       @tags.concat(todo.tags) if todo.tags.length > 0
     }
     @tags.uniq!

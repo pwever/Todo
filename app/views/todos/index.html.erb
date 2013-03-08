@@ -8,7 +8,7 @@
 <p class="notice"><%= params[:notice] %></p>
 <% end %>
 
-<ul id="todos">
+<ul id="todos_due" class="todos">
 <%= form_tag( {:action => :markdone} ) do %>
 <% @todos.each do |@todo| %>
 <%= render "line" %>
@@ -16,6 +16,19 @@
 	<%= submit_tag "Mark done" %>
 <% end %>
 </ul>
+
+<% if !@todos_current.nil? then %>
+
+<ul id="todos_current" class="todos">
+<%= form_tag( {:action => :markdone} ) do %>
+<% @todos_current.each do |@todo| %>
+<%= render "line" %>
+	<% end %>
+	<%= submit_tag "Mark done" %>
+<% end %>
+</ul>
+
+<% end %>
 
 <% if !@tags.nil? then %>
 <ul id="ticklers">
