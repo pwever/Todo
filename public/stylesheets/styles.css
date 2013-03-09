@@ -1,3 +1,4 @@
+
 /* reset */
 * {
 	margin: 0;
@@ -8,22 +9,18 @@
 
 /* general */
 body {
-	font-size: 12px;
+	font-size: 16px;
 	font-weight: 100;
 	line-height: 1.5em;
 	color: #666;
 	background-color: #EEE;
-	background: -webkit-linear-gradient(45deg, #EEE 25%,
-	    #E9E9E9 25%, #E9E9E9 50%, 
-	    #EEE 50%, #EEE 75%, 
-	    #E9E9E9 75%);
-	background-size:100px 100px;
+	-webkit-user-select: none;
 }
 
 div#container {
-	width: 40em;
-	margin: 2em auto;
-	padding: 2em;
+	width: 100%;
+	margin: 0;
+	padding: 0;
 	background-color: white;
 	-webkit-border-radius: 2px;
 	-moz-border-radius: 2px;
@@ -45,11 +42,6 @@ a {
 	border-radius: 2px;
 }
 
-a:hover {
-	opacity: 0.5;
-}
-
-
 p.notice {
 	color: green;
 	padding: 0.25em;
@@ -58,25 +50,38 @@ p.notice {
 
 
 /* new todo form */
+#new_todo {
+	position: absolute;
+	width: 100%;
+	padding: 0;
+	z-index: 10000;
+}
 #new_todo input[type=text] {
-	width: 70%;
+	position: fixed;
+	width: 100%;
 	padding: 0.5em;
 	margin-bottom: 0.5em;
-	border: 1px solid #EEE;
-	-webkit-border-radius: 2px;
-	-moz-border-radius: 2px;
-	border-radius: 2px;
+	border: 0;
+	-webkit-appearance:none;
+	background-color: #333;
+	background: -webkit-linear-gradient(45deg, #333 25%,
+	    #393939 25%, #393939 50%, 
+	    #333 50%, #333 75%, 
+	    #393939 75%);
+	background-size:10px 10px;
+	color: #FFF;
+	font-size: 1.25em;
+	font-weight: 600;
+	-webkit-border-radius: 0;
+	-moz-border-radius: 0;
+	border-radius: 0;
 }
 
 #new_todo input[type=submit] {
 	width: 25%;
 	padding: 0.5em;
-	margin-bottom: 0.5em;
-	border: 1px solid #EEE;
 	color: white;
-}
-#new_todo input[type=submit]:hover {
-	background-color: black;
+	-webkit-appearance:none;
 }
 
 
@@ -84,13 +89,18 @@ p.notice {
 
 /* todo list */
 ul.todos {
+	padding: 0em;
+	padding-top: 4em;
 	list-style: none;
+}
+
+ul#todos_current {
+	opacity: 0.5;
 }
 
 ul.todos li {
 	position: relative;
-	border-bottom: 1px solid #EEE;
-	padding: 0.25em;
+	padding: 0.5em 0.75em;
 	font-weight: 400;
 }
 
@@ -101,6 +111,7 @@ ul.todos li.done {
 
 ul.todos li span.input {
 	padding: 0.4em 0.5em;
+	-webkit-appearance:none;
 }
 
 ul.todos li span.timestamp {
@@ -121,19 +132,10 @@ ul.todos input[type=submit] {
 	margin: 0.5em auto;
 	border: 1px solid #EEE;
 	color: white;
+	-webkit-appearance:none;
 	-webkit-border-radius: 2px;
 	-moz-border-radius: 2px;
 	border-radius: 2px;
-}
-
-ul#ticklers {
-	list-style: none;
-	margin-top: 1em;
-}
-
-ul#ticklers li {
-	display: inline;
-	line-height: 2em;
 }
 
 
@@ -148,6 +150,7 @@ ul.todos li span.labels {
 }
 
 ul.todos li span.tag, ul#ticklers li span.tag {
+	display: inline;
 	padding: 0.25em 0.5em;
 	color: white;
 	-webkit-border-radius: 2px;
@@ -164,6 +167,7 @@ ul.todos a.delete_link {
 
 /* in-line editing */
 ul.todos li form, #todos li form input {
+	-webkit-appearance:none;
 	display: inline;
 	width: 80%;
 }
@@ -173,8 +177,23 @@ ul.todos input[type=text] {
 	padding: 0.5em;
 	margin-bottom: 0.5em;
 	border: 1px solid #EEE;
+	-webkit-appearance:none;
 }
 
+
+
+/* ticklers */
+ul#ticklers {
+	text-align: right;
+	list-style: none;
+	margin-top: 1em;
+	margin-right: 1.5em;
+}
+
+ul#ticklers li {
+	display: inline;
+	line-height: 2em;
+}
 
 
 
